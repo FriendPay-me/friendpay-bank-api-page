@@ -4,9 +4,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const expDateInput = document.getElementById('cc-exp');
     const cvvInput = document.getElementById('cc-cvv');
     const cardIcon = document.getElementById('cc-icon');
+    const form = document.querySelector('#ccForm');
     const submitBtn = document.getElementById('submit-btn');
     const ccError = `<span class="material-symbols-outlined text-danger">error</span>`
     const ccDefault = `<span class="material-symbols-outlined">credit_card</span>`
+
+    cardNumberInput.focus()
+    updateSubmitButtonState()
 
     const cardRegexList = [
         { vendor: "Visa", regex: /^4[0-9]*$/, src: 'visa' },
@@ -115,12 +119,29 @@ document.addEventListener('DOMContentLoaded', function () {
         const isValidExpDate = expDateInput.getAttribute("isValid") === "true";
         const isValidCVV = cvvInput.getAttribute("isValid") === "true";
         submitBtn.disabled = !(isValidCardNumber && isValidExpDate && isValidCVV);
-        isValidCardNumber && isValidExpDate && isValidCVV && console.log(`
-        Card Number : ${cardNumberInput.value.replace(/\D/g, '')}
-        Exp Date : ${expDateInput.value.replace(/\D/g, '')}
-        CVV : ${cvvInput.value.replace(/\D/g, '')}
-        `)
         return isValidCardNumber && isValidExpDate && isValidCVV
+    }
+
+    function submitForm () {
+        let date = expDateInput.value.replace(/\D/g, ''),
+        formCCNum = document.querySelector('#cardnr'),
+        formCCExpM = document.querySelector('#validMonth'),
+        formCCExpY = document.querySelector('#validYear');
+        formCCNum.value = cardNumberInput.value.replace(/\D/g, '')
+        formCCExpM.value = date.substring(0, 2)
+        formCCExpY.value = date.substring(2, 4)
+
+        const cvvHiddenInput = document.createElement('input');
+        cvvHiddenInput.type = 'hidden';
+        cvvHiddenInput.name = 'cvc2';
+        cvvHiddenInput.value = cvvInput.value;
+
+        form.appendChild(cvvHiddenInput);
+        form.submit();
+        form.removeChild(cvvHiddenInput);
+        formCCNum.value = ''
+        formCCExpM.value = ''
+        formCCExpY.value = ''
     }
 
     function getCardVendor(cardNumber) {
@@ -205,6 +226,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     submitBtn.addEventListener('click', function () {
-        alert('Payment successful!');
+        submitForm();
     });
 });
