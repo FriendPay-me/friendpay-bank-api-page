@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, interactive-widget=resizes-content">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap.min.css" />
+    <link fetchpriority="high" rel="stylesheet" href="font/inter.css">
+    <link rel="stylesheet" href="style.css">
+    <title>FriendPay</title>
+</head>
+
+<body class="d-flex align-items-center justify-content-center">
+    <div class="card">
+        <img class="logo" src="./assets/logo-wide.svg" alt="">
+        <div class="d-flex flex-column justify-content-center card-inputs mt-3 pt-2 mb-4 pb-4">
+            <div class="input-group card-input" bis_skin_checked="1">
+                <span id="cc-icon" class="input-group-text">
+                    <span class="material-symbols-outlined">
+                        credit_card
+                    </span>
+                </span>
+                <input type="tel" class="form-control" maxlength="19" id="cc-number" name="cc-number"
+                    autocomplete="cc-number" placeholder="Enter your card number" aria-label="Card Number"
+                    aria-describedby="input-group-left">
+            </div>
+            <div class="d-flex card-info">
+                <div class="input-group card-input" bis_skin_checked="1">
+                    <span class="input-group-text material-symbols-outlined">
+                        date_range
+                    </span>
+                    <input type="tel" class="form-control" maxlength="5" id="cc-exp" name="cc-exp" autocomplete="cc-exp"
+                        placeholder="MM/YY" aria-label="MM/YY" aria-describedby="input-group-left">
+                </div>
+                <div class="input-group card-input" bis_skin_checked="1">
+                    <span class="input-group-text material-symbols-outlined">
+                        password
+                    </span>
+                    <input type="tel" class="form-control" maxlength="4" pattern="[0-9]*" id="cc-cvv" name="cvc2"
+                        autocomplete="cc-csc" placeholder="CVC/CVV" aria-label="CVV"
+                        aria-describedby="input-group-left">
+                </div>
+            </div>
+            <form id="ccForm" method="post">
+                <input id="cardname" type="hidden" name="CardHolder" autocomplete="off" size="19" maxlength="19"
+                    value="Millikart">
+                <input name="Pan" type="hidden" id="cardnr">
+                <input name="ExpiryMonth" type="hidden" id="validMonth">
+                <input name="ExpiryYear" type="hidden" id="validYear">
+            </form>
+            <button type="submit" id="submit-btn" disabled class="btn btn-primary mt-4">{amount} {currency} |
+                Pay</button>
+        </div>
+        <div class="footer d-flex justify-content-center">
+            <img src="./assets/mastercard.svg" alt="Mastercard logo">
+            <img src="./assets/visa.svg" alt="Visa logo">
+        </div>
+    </div>
+    <script src="assets/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
