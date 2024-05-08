@@ -6,19 +6,19 @@
 
 ![FriendPayLogo](https://github.com/FriendPay-me/friendpay-front/assets/47758460/688cc9c9-d1af-4abb-a40b-4329ebb71af1)
 
-FriendPay is a service that allows you to send money to your friends easily. Simply create a personalized link or QR code on FriendPay to receive money.
+FriendPay dostlarınıza asanlıqla pul göndərməyə imkan verən xidmətdir. Pul almaq üçün isə sadəcə FriendPay-də fərdiləşdirilmiş linkinizi və ya QR kodunuzu yaradın.
 
-### FriendPay Bank API Connector
+### FriendPay Bank API Konnektoru
 
-FriendPay Bank API Connector: Simplify your bank API interactions with a secure and user-friendly interface. Initiate secure payments through the bank API with ease, leveraging FriendPay's intuitive portal. Send secure API requests to the bank for seamless payment processing, backed by robust security measures.
+FriendPay Bank API Konnektoru: Təhlükəsiz və istifadəçi dostu interfeys ilə bank API-ilə qarşılıqlı əlaqənizi sadələşdirin. FriendPay-in intuitiv portalından istifadə edərək asanlıqla bank API-ı vasitəsilə təhlükəsiz ödənişlərə başlayın. Güclü təhlükəsizlik tədbirləri ilə dəstəklənən problemsiz ödəniş emalı üçün banka təhlükəsiz API sorğuları göndərin.
 
-#### The script updates the card icon, masks the input, and provides visual feedback on validation status (valid/invalid).
+#### Skript kartın simvolunu yeniləyir, daxiletməni maskalayır və doğrulama statusu ilə bağlı vizual rəy təqdim edir (etibarlı/etibarsız).
 
-##### Explanation:
+##### İzah:
 
-- The script can recognize card patterns, validators, and icon mappings.
-  - It uses RegExp in order to do it
-- The validateCardNumber function identifies the card type and validates its number based on the patterns.
+- Skript kart nümunələrini, validatorları və ikon xəritələrini tanıya bilər.
+   - Bunu etmək üçün RegExp istifadə edir
+- validateCardNumber funksiyası kartın növünü müəyyən edir və nümunələrə əsasən onun nömrəsini təsdiq edir.
 ```javascript
     function validateCardNumber(cardNumber) {
         cardNumber = cardNumber.replace(/\D/g, '');
@@ -43,7 +43,7 @@ FriendPay Bank API Connector: Simplify your bank API interactions with a secure 
         return (sum % 10 === 0) && !ignoredExpCheck(cardNumber);
     }
 ```
-  - The ignoredExpCheck function can check various ignored card number patters.
+  - ignoredExpCheck funksiyası müxtəlif nəzərə alınmayan kart nömrə modelərini yoxlaya bilər.
 ```javascript
     const ignoredExp = [
         /4005550000000001/,
@@ -64,7 +64,7 @@ FriendPay Bank API Connector: Simplify your bank API interactions with a secure 
             });
         }
 ```
-- The script dynamically updates the card icon based on the identified type.
+- Skript müəyyən edilmiş növə əsasən kart simvolunu dinamik olaraq yeniləyir.
 ```javascript
     function getCardVendor(cardNumber) {
         for (const card of cardRegexList) {
@@ -82,8 +82,8 @@ FriendPay Bank API Connector: Simplify your bank API interactions with a secure 
             cardNumber.length > 6 && (isValidCardNumber ? (cardIcon.innerHTML = `<span class="material-symbols-outlined">indeterminate_question_box</span>`) : cardIcon.innerHTML = ccError)
         }
 ```
-- An event listener on the card number input field triggers these functions whenever the value changes.
-  - And masks them
+- Kart nömrəsi daxiletmə sahəsindəki event listener dəyər dəyişdikdə bu funksiyaları işə salır.
+   - Və onları maskalayır
 ```javascript
  cardNumberInput.addEventListener('input', function () {
         let cardNumber = cardNumberInput.value.replace(/\D/g, '');
@@ -106,4 +106,4 @@ FriendPay Bank API Connector: Simplify your bank API interactions with a secure 
     });
 ```
 
-#### By incorporating these features, you can create a more robust and user-friendly experience for users interacting with the FriendPay Bank API Connector.
+#### Bu xüsusiyyətləri özündə birləşdirərək, FriendPay Bank API Konnektoru ilə qarşılıqlı əlaqədə olan istifadəçilər üçün daha təhlükəsiz və istifadəçi dostu təcrübə yarada bilərsiniz.
